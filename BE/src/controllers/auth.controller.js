@@ -17,6 +17,12 @@ exports.login = async (req, res) => {
 
         const token = await _authService.login(name, password);
 
+        res.cookie("token", token, {
+            httpOnly: true, // Bảo mật, không thể truy cập từ frontend JavaScript
+            secure: false, 
+            sameSite: "strict" // Chặn truy cập từ trang khác
+        });
+
         res.json({ message: "Đăng nhập thành công", token });
     } catch (error) {
         res.status(401).json({ message: error.message });

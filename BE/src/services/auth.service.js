@@ -3,10 +3,11 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const _userRepository = require("../repositories/user.repository")
 const bcrypt = require("bcryptjs");
+const userRole = require("../enums/userRole.enum");
 
 const generateToken = (user) => {
     return jwt.sign(
-        { id: user.id, age: user.age,name:user.name },
+        { id: user.id, age: user.age,name:user.name, role: user.role},
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -24,7 +25,7 @@ exports.register = async (req) =>
         if (existingUser) return res.status(400).json({ message: "Tên đã tồn tại" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ name, password: hashedPassword, age });
+        const newUser = new User({ name, password: hashedPassword, age, role: userRole.CUSTOMER });
         await _userRepository.createUser(newUser);
 }
 
