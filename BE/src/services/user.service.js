@@ -1,24 +1,28 @@
-const _userRepository = require("../repositories/user.repository");
+const _repository = require("../repositories/sub.repository");
 
 class UserService {
     async getAll() {
-        return await _userRepository.getAll();
+        return await _repository.userRepository.getAll();
     }
 
     async getById(id) {
-        return await _userRepository.getById(id);
+        return await _repository.userRepository.getById(id);
     }
 
     async add(entity) {
-        return await _userRepository.add(entity);
+        await _repository.userRepository. add(entity);
+        return "Thêm thành công";
     }
 
     async update(id, entity) {
-        return await _userRepository.update(id, entity);
+        await _repository.userRepository.update(id, entity);
+        return "Đã cập nhật thành công";
+
     }
 
     async delete(id) {
-        return await _userRepository.delete(id);
+        await _repository.userRepository.delete(id);
+        return "Đã xóa thành công";
     }
 }
 

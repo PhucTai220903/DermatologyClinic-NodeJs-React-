@@ -1,7 +1,7 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
-const _userRepository = require("../repositories/user.repository")
+const _repository = require("../repositories/sub.repository");
 const bcrypt = require("bcryptjs");
 const userRole = require("../enums/userRole.enum");
 
@@ -20,11 +20,11 @@ const generateToken = (user) => {
 exports.register = async (newUserRequest) =>
 {
         const existingUser = await User.findOne({ email: newUserRequest.email });
-        if (existingUser) return res.status(400).json({ message: "Email đã tồn tại" });
+        if (existingUser) throw new Error("Email đã tồn tại");
 
         const hashedPassword = await bcrypt.hash(newUserRequest.password, 10);
         newUserRequest.password = hashedPassword;
-        await _userRepository.add(newUserRequest);
+        await _repository.userRepository.add(newUserRequest);
 }
 
 exports.login = async (name, password) => {
