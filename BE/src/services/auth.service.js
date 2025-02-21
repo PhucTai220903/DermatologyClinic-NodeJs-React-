@@ -17,16 +17,14 @@ const generateToken = (user) => {
 //     return jwt.verify(token, process.env.JWT_SECRET);
 // };
 
-exports.register = async (req) =>
+exports.register = async (newUserRequest) =>
 {
-    const { name, password, age } = req.body;
+        const existingUser = await User.findOne({ email: newUserRequest.email });
+        if (existingUser) return res.status(400).json({ message: "Email đã tồn tại" });
 
-        const existingUser = await User.findOne({ name });
-        if (existingUser) return res.status(400).json({ message: "Tên đã tồn tại" });
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ name, password: hashedPassword, age, role: UserRoleENUM.CUSTOMER });
-        await _userRepository.createUser(newUser);
+        const hashedPassword = await bcrypt.hash(newUserRequest.password, 10);
+        newUserRequest.password = hashedPassword;
+        await _userRepository.createUser(newUserRequest);
 }
 
 exports.login = async (name, password) => {

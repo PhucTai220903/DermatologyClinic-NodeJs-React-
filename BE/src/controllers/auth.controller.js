@@ -3,7 +3,7 @@ const User = require("../models/user.model");
 
 exports.register = async (req, res) => {
     try {
-        _authService.register(req);
+        await _authService.register(req.body);
 
         res.status(201).json({ message: "Đăng ký thành công!" });
     } catch (error) {
