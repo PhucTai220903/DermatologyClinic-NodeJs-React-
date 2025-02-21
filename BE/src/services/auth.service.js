@@ -24,7 +24,7 @@ exports.register = async (newUserRequest) =>
 
         const hashedPassword = await bcrypt.hash(newUserRequest.password, 10);
         newUserRequest.password = hashedPassword;
-        await _userRepository.createUser(newUserRequest);
+        await _userRepository.add(newUserRequest);
 }
 
 exports.login = async (name, password) => {

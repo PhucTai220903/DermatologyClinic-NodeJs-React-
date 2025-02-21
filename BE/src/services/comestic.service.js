@@ -1,4 +1,4 @@
-const _comesticRepository = require("../repositories/Comestic.repository");
+const _comesticRepository = require("../repositories/comestic.repository");
 
 class ComesticService {
     async getAll() {

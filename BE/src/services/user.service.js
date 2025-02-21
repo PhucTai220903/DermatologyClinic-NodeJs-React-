@@ -9,8 +9,8 @@ class UserService {
         return await _userRepository.getById(id);
     }
 
-    async create(entity) {
-        return await _userRepository.create(entity);
+    async add(entity) {
+        return await _userRepository.add(entity);
     }
 
     async update(id, entity) {

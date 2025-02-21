@@ -21,6 +21,7 @@ app.use(cookieParser());
 app.use("/api/users", route.userRoutes);
 app.use("/api/auth", route.authRoutes);
 app.use("/api/comestic", route.comesticRoutes);
+app.use("/api/appointment", route.appointmentRoutes);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

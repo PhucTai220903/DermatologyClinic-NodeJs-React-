@@ -9,7 +9,7 @@ class UserRepository {
         return await User.findById(id);
     }
 
-    async createUser(userData) {
+    async add(userData) {
         const user = new User(userData);
         return await user.save();
     }
