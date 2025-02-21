@@ -1,24 +1,24 @@
-const userRepository = require("../repositories/user.repository");
+const _userRepository = require("../repositories/user.repository");
 
 class UserService {
-    async getAllUsers() {
-        return await userRepository.getAllUsers();
+    async getAll() {
+        return await _userRepository.getAll();
     }
 
-    async getUserById(id) {
-        return await userRepository.getUserById(id);
+    async getById(id) {
+        return await _userRepository.getById(id);
     }
 
-    async createUser(userData) {
-        return await userRepository.createUser(userData);
+    async create(entity) {
+        return await _userRepository.create(entity);
     }
 
-    async updateUser(id, userData) {
-        return await userRepository.updateUser(id, userData);
+    async update(id, entity) {
+        return await _userRepository.update(id, entity);
     }
 
-    async deleteUser(id) {
-        return await userRepository.deleteUser(id);
+    async delete(id) {
+        return await _userRepository.delete(id);
     }
 }
 

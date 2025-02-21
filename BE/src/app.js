@@ -1,10 +1,9 @@
 const express = require("express");
 const connectDB = require("./config/database");
-const userRoutes = require("./routes/user.route");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const authRoutes = require("./routes/auth.route");
 const cookieParser = require("cookie-parser");
+const route = require("./imports/routes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,9 +18,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/api/users", userRoutes);
-
-app.use("/api/auth", authRoutes);
+app.use("/api/users", route.userRoutes);
+app.use("/api/auth", route.authRoutes);
+app.use("/api/comestic", route.comesticRoutes);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

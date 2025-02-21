@@ -1,11 +1,11 @@
 const User = require("../models/user.model");
 
 class UserRepository {
-    async getAllUsers() {
+    async getAll() {
         return await User.find();
     }
 
-    async getUserById(id) {
+    async getById(id) {
         return await User.findById(id);
     }
 
@@ -14,11 +14,11 @@ class UserRepository {
         return await user.save();
     }
 
-    async updateUser(id, userData) {
+    async update(id, userData) {
         return await User.findByIdAndUpdate(id, userData, { new: true });
     }
 
-    async deleteUser(id) {
+    async delete(id) {
         return await User.findByIdAndDelete(id);
     }
 }

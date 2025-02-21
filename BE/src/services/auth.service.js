@@ -25,7 +25,7 @@ exports.register = async (req) =>
         if (existingUser) return res.status(400).json({ message: "Tên đã tồn tại" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ name, password: hashedPassword, age, role: userRole.CUSTOMER });
+        const newUser = new User({ name, password: hashedPassword, age, role: UserRoleENUM.CUSTOMER });
         await _userRepository.createUser(newUser);
 }
 
