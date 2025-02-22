@@ -1,4 +1,5 @@
 const _repository = require("../repositories/sub.repository");
+const User = require("../models/user.model");
 
 class appointmentService {
     async getAll() {
@@ -9,10 +10,34 @@ class appointmentService {
         return await _repository.appointmentRepository.getById(id);
     }
 
-    async add(entity) {
-        await _repository.appointmentRepository.add(entity);
-        return "Thêm thành công";
+    async add(customer_id, entity) {
+            if (!entity || !customer_id || !entity.doctor_id) {
+                throw new Error("Dữ liệu không hợp lệ");
+            }
+    
+            // Tìm cả khách hàng và bác sĩ cùng lúc để tối ưu tốc độ
+            const [existingCustomer, existingDoctor] = await Promise.all([
+                User.findById(customer_id),
+                User.findById(entity.doctor_id)
+            ]);
+    
+            if (!existingCustomer) {
+                const error = new Error("Không tìm thấy bác sĩ này");
+                error.status = 404; 
+                throw error;
+            }
+
+            if (!existingDoctor){
+                const error = new Error("Không tìm thấy bác sĩ này");
+                error.status = 404; 
+                throw error;
+            }
+    
+            entity.customer_id = customer_id;
+            await _repository.appointmentRepository.add(entity);
+            return "Thêm thành công";
     }
+    
 
     async update(id, entity) {
         await _repository.appointmentRepository.update(id, entity);

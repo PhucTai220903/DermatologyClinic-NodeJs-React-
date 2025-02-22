@@ -22,12 +22,22 @@ exports.getById = async (req,res) =>{
     }
 };
 
-exports.add = async (req,res) =>{
+exports.addByCustomer = async (req,res) =>{
     try{
-        const appointmentToAdd = await _appointmentService.add(req.body);
-        res.status(200).json(appointmentToAdd);
+        var currentUserId = req.user.id;
+        const appointmentToAdd = await _appointmentService.add(currentUserId,req.body);
+        res.status(200).json({ message: appointmentToAdd});
     }catch (error){
-        res.status(400).json({ message: err.message });
+        res.status(error.status).json({ message: error.message });
+    }
+};
+
+exports.addByPharmacist = async (req,res) => {
+    try{
+        const appointmentToAdd = await _appointmentService.add(req.body.customer_id,req.body);
+        res.status(200).json({ message: appointmentToAdd});
+    }catch (error){
+        res.status(400).json({ message: error.message });
     }
 };
 
@@ -38,7 +48,7 @@ exports.update= async (req, res) =>{
         res.json({ message: updateAppointment });
     } catch(error)
     {
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ message: error.message });
     }
 };
 
@@ -49,6 +59,6 @@ exports.delete = async (req, res) =>{
         res.json(deletedAppointment);
     }catch(error)
     {
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ message: error.message });
     }
 }

@@ -8,6 +8,6 @@ router.get("/profile", authMiddleware.currentUser, userController.getProfile);
 
 router.post("/getById", userController.getById);
 router.put("/update/:id", userController.update);
-router.delete("/delete/:id", userController.delete);
+router.delete("/delete", userController.delete);
 
 module.exports = router;

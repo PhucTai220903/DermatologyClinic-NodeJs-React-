@@ -1,5 +1,7 @@
 const _comesticService = require("../services/comestic.service");
+const _reviewService = require("../services/review.service");
 
+// Products
 exports.getAll = async (req,res) =>{
     try{
         const comestics = await _comesticService.getAll();
@@ -22,16 +24,16 @@ exports.getById = async (req,res) =>{
     }
 };
 
-exports.add = async (req,res) =>{
+exports.addComestic = async (req,res) =>{
     try{
         const comesticToAdd = await _comesticService.add(req.body);
-        res.status(200).json(comesticToAdd);
+        res.status(200).json({ message: comesticToAdd });
     }catch (error){
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ message: error.message });
     }
 };
 
-exports.update= async (req, res) =>{
+exports.updateComestic = async (req, res) =>{
     try{
         const updateComestic = await _comesticService.update(req.params.id, req.body);
         if(!updateComestic) return res.status(404).json({message: "Không tồn tại mỹ phẩm này"});
@@ -42,9 +44,9 @@ exports.update= async (req, res) =>{
     }
 };
 
-exports.delete = async (req, res) =>{
+exports.deleteComestic = async (req, res) =>{
     try{
-        const deletedComestic = await _comesticService.delete(req.params.id);
+        const deletedComestic = await _comesticService.delete(req.body.id);
         if(!deletedComestic) return res.status(404).json({messgae: "Không tồn tại mỹ phẩm này"});
         res.json(deletedComestic);
     }catch(error)
@@ -52,3 +54,34 @@ exports.delete = async (req, res) =>{
         res.status(400).json({ message: err.message });
     }
 }
+
+// Reviews
+// exports.addReview() = async (req,res) => {
+//     try{
+//         const { customer_id, comment, rating } = req.body;
+//         const addedReview = await _reviewService(req.body.id);
+//         if(!addedReview) return res.status(404).json({messgae: "Không tồn tại review này"});
+
+//     } catch (err)
+//     {
+
+//     }
+// };
+
+// exports.updateReview() = async (req,res) => {
+//     try{
+
+//     } catch (err)
+//     {
+
+//     }
+// };
+
+// exports.deleteReview() = async (req,res) => {
+//     try{
+
+//     } catch (err)
+//     {
+
+//     }
+// };

@@ -5,8 +5,9 @@ const authMiddleware = require("../middlewares/auth.middleware");
 
 router.get("/getAll", appointmentController.getAll);
 router.get("/getById/:id",appointmentController.getById);
-router.post("/add",authMiddleware.verifyAdmin, appointmentController.add)
-router.put("/update/:id",authMiddleware.verifyAdmin, appointmentController.update);
-router.delete("/delete/:id",authMiddleware.verifyAdmin, appointmentController.delete);
+router.post("/addByCustomer",authMiddleware.currentUser ,appointmentController.addByCustomer);
+router.post("/addByPharmacist",appointmentController.addByPharmacist);
+router.put("/update/",appointmentController.update);
+router.delete("/delete",appointmentController.delete);
 
 module.exports = router;

@@ -1,13 +1,21 @@
 const mongoose = require("mongoose");
 
-const ComesticSchema = new mongoose.Schema({
+const comesticSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    inventory: { type: Number, required: true },
-    isHidden: {type: Boolean, default: false }
+    stock: { type: Number, required: true },
+    rating: { type: Number, default: 0, min: 0, max: 5 },
+    isHidden: { type: Boolean, default: false },
+    reviews: [
+        {
+            customer_id: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+            comment: { type: String, required: true },
+            rating: { type: Number, required: true, min: 0, max: 5 },
+            createdAt: { type: Date, default: Date.now }
+        }
+    ]
 }, { timestamps: true });
 
-const Comestic = mongoose.model("Comestic",ComesticSchema);
-
-module.exports = Comestic;
+const Cosmetic = mongoose.model("Comestic", comesticSchema);
+module.exports = Cosmetic;
