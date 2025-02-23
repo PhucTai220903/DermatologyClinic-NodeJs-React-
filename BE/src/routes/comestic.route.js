@@ -11,8 +11,8 @@ router.put("/update",authMiddleware.verifyAdmin, comesticController.updateComest
 router.delete("/delete",authMiddleware.verifyAdmin, comesticController.deleteComestic);
 
 // Reviews
-// router.post("/review", comesticController.addReview);
-// router.put("/review", comesticController.updateReview);
-// router.delete("/review", comesticController.deleteReview);
+router.post("/review",authMiddleware.currentUser, comesticController.addReview);
+router.put("/review",authMiddleware.currentUser, comesticController.updateReview);
+router.delete("/review",authMiddleware.currentUser, comesticController.deleteReview);
 
 module.exports = router;

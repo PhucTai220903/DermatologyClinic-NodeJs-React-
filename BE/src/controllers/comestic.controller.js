@@ -53,35 +53,35 @@ exports.deleteComestic = async (req, res) =>{
     {
         res.status(400).json({ message: err.message });
     }
-}
+};
 
 // Reviews
-// exports.addReview() = async (req,res) => {
-//     try{
-//         const { customer_id, comment, rating } = req.body;
-//         const addedReview = await _reviewService(req.body.id);
-//         if(!addedReview) return res.status(404).json({messgae: "Không tồn tại review này"});
+exports.addReview = async (req,res) => {
+    try{
+        const currentUserId = req.user.id;
+        const addedReview = await _reviewService.add(currentUserId,req.body);
+        res.status(200).json({ message: addedReview });
+    } catch (err)
+    {
+        res.status(error.status).json({ message: err.message });
+    }
+};
 
-//     } catch (err)
-//     {
+exports.updateReview = async (req,res) => {
+    try{
+        const reviewToUpdate = await _reviewService.update(req.body);
+        res.json(reviewToUpdate);
+    } catch (err)
+    {
+        res.status(err.status).json({ message: err.message });
+    }
+};
 
-//     }
-// };
-
-// exports.updateReview() = async (req,res) => {
-//     try{
-
-//     } catch (err)
-//     {
-
-//     }
-// };
-
-// exports.deleteReview() = async (req,res) => {
-//     try{
-
-//     } catch (err)
-//     {
-
-//     }
-// };
+exports.deleteReview = async (req,res) => {
+    try {
+        await _reviewService.delete(req.body);
+        res.json({ message: "Đã xóa bình luận thành công" });
+    } catch (err) {
+        res.status(err.status || 500).json({ message: err.message });
+    }
+};
