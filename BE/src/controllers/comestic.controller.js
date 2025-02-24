@@ -55,6 +55,26 @@ exports.deleteComestic = async (req, res) =>{
     }
 };
 
+exports.searchComestic = async (req,res) => {
+    try {
+        const comesticToSearch = await _comesticService.getByName(req.body.name);
+        res.json(comesticToSearch);
+    } catch (err)
+    {
+        res.status(400).json({ message: err.message });
+    }
+}
+
+exports.sortByPrice = async (req, res) => {
+    try {
+        const comesticsList = await _comesticService.sortByPrice(req.body.type); // 1 là ascen, -1 là descen
+        res.json(comesticsList);
+    } catch (err)
+    {
+        res.status(400).json({ message: err.message });
+    }
+};
+ 
 // Reviews
 exports.addReview = async (req,res) => {
     try{

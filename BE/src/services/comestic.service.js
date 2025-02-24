@@ -9,6 +9,23 @@ class ComesticService {
         return await _repository.comesticRepository.getById(id);
     }
 
+    async getByName(comesticName) {
+        const cosmestic =  await _repository.comesticRepository.getByName(comesticName);
+
+        if(!cosmestic) {
+            const error = new Error("Không tìm thấy sản phẩm");
+            error.status = 404;
+            throw error;   
+        }
+
+        return cosmestic;
+    }
+
+    async sortByPrice(type) {
+        const sortedList = await _repository.comesticRepository.sortByPrice(type);
+        return sortedList;
+    }
+
     async add(entity) {
         await _repository.comesticRepository.add(entity);
         return "Thêm thành công";

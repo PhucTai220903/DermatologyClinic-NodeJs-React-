@@ -16,6 +16,10 @@ class ComesticRepository extends BaseRepository {
     constructor() {
         super("Comestic");
     }
+
+    async sortByPrice(type) {
+        return await this.model.find().sort({ price: type }); // 1 để sắp xếp tăng dần, -1 để sắp xếp giảm dần
+    }
 }
 
 module.exports = {
