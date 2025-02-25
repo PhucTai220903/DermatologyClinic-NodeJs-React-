@@ -83,13 +83,14 @@ exports.addReview = async (req,res) => {
         res.status(200).json({ message: addedReview });
     } catch (err)
     {
-        res.status(error.status).json({ message: err.message });
+        res.status(err.status).json({ message: err.message });
     }
 };
 
 exports.updateReview = async (req,res) => {
     try{
-        const reviewToUpdate = await _reviewService.update(req.body);
+        const currentUserId = req.user.id;
+        const reviewToUpdate = await _reviewService.update(currentUserId, req.body);
         res.json(reviewToUpdate);
     } catch (err)
     {
@@ -99,7 +100,8 @@ exports.updateReview = async (req,res) => {
 
 exports.deleteReview = async (req,res) => {
     try {
-        await _reviewService.delete(req.body);
+        const currentUserId = req.user.id;
+        await _reviewService.delete(currentUserId, req.body);
         res.json({ message: "Đã xóa bình luận thành công" });
     } catch (err) {
         res.status(err.status || 500).json({ message: err.message });
