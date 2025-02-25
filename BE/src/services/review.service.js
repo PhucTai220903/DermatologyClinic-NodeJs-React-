@@ -53,7 +53,8 @@ class ReviewService {
         if (!checkIfCurrentUserReview)
             throw Object.assign(new Error("Bạn không có quyền chỉnh sửa review này"), { status: 403 });
 
-        existingComestic.reviews.splice(existingReview,1);
+        existingComestic.reviews.splice(existingReview,1); 
+        // array.splice(start, deleteCount, item1, item2, ...); delete, item is optional
 
         this.calculateAverageRating(existingComestic);
 

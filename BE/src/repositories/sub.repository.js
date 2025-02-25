@@ -22,8 +22,15 @@ class ComesticRepository extends BaseRepository {
     }
 }
 
+class MedicineRepository extends BaseRepository {
+    constructor() {
+        super("Medicine");
+    }
+}
+
 module.exports = {
     userRepository: new UserRepository(),
     appointmentRepository: new AppointmentRepository(),
-    comesticRepository: new ComesticRepository()
+    comesticRepository: new ComesticRepository(),
+    medicineRepository: new MedicineRepository()
 };
