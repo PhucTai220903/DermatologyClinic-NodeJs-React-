@@ -34,3 +34,23 @@ exports.verifyAdmin = (req, res, next) => {
         res.status(401).json({ message: "Token không hợp lệ!" });
     }
 };
+
+exports.verifyDoctor = (req, res, next) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) {
+            return res.status(401).json({ message: "Không có token, truy cập bị từ chối!" });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        if (decoded.role !== UserRole.DOCTOR) {
+            return res.status(403).json({ message: "Bạn không có quyền truy cập!" });
+        }
+
+        req.user = decoded;
+        next(); 
+    } catch (err) {
+        res.status(401).json({ message: "Token không hợp lệ!" });
+    }
+};

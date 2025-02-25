@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
         default: "active" 
     },
     failed_appointments: { type: Number, default: 0 },
-    medical_records: [{ type: mongoose.Schema.Types.ObjectId, ref: "MedicalRecord" }]
+    medical_records: [{ type: mongoose.Schema.Types.ObjectId, ref: "Medical_Record" }]
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

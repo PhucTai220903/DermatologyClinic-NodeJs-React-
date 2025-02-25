@@ -47,7 +47,7 @@ exports.deleteComestic = async (req, res) => {
         const deletedComestic = await _comesticService.delete(req.body.id);
         if (!deletedComestic) return res.status(404).json({ messgae: "Không tồn tại mỹ phẩm này" });
         res.json(deletedComestic);
-    } catch (error) {
+    } catch (err) {
         res.status(400).json({ message: err.message });
     }
 };

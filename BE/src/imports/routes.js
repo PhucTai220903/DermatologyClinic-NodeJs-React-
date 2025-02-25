@@ -3,11 +3,13 @@ const authRoutes = require("../routes/auth.route");
 const userRoutes = require("../routes/user.route");
 const appointmentRoutes = require("../routes/appointment.route");
 const medicineRoutes = require("../routes/medicine.route");
+const medical_recordRoutes = require("../routes/medical_record.route");
 
 module.exports = {
     comesticRoutes,
     authRoutes,
     userRoutes,
     appointmentRoutes,
-    medicineRoutes
+    medicineRoutes,
+    medical_recordRoutes
 };
