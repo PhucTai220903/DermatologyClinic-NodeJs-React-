@@ -22,7 +22,8 @@ exports.getById = async (req, res) => {
 
 exports.add = async (req, res) => {
     try {
-        const medical_recordToAdd = await _medical_recordService.add(req.body);
+        const { id } = req.user;
+        const medical_recordToAdd = await _medical_recordService.add(id, req.body);
         res.status(200).json({ message: medical_recordToAdd });
     } catch (err) {
         res.status(err.status).json({ message: err.message });
@@ -37,14 +38,3 @@ exports.update = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
-
-exports.delete = async (req, res) => {
-    try {
-        const medical_recordToDelete = await _medical_recordService.delete(req.body.id);
-        res.status(200).json({message: medical_recordToDelete});
-    } catch (error) {
-        res.status(400).json({ message: err.message });
-    }
-};
-
-COntinue wwith this

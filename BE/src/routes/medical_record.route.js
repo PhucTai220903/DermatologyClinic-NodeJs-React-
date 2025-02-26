@@ -2,11 +2,11 @@ const express = require("express");
 const medical_recordController = require("../controllers/medical_record.controller");
 const router = express.Router();
 const authMiddleware = require("../middlewares/auth.middleware");
+const userRole = require("../enums/userRole.enum")
 
-router.get("/getAll", authMiddleware.verifyDoctor, medical_recordController.getAll);
-router.get("/getById/:id", authMiddleware.verifyDoctor, medical_recordController.getById);
-router.post("/add", authMiddleware.verifyDoctor, medical_recordController.add);
-router.put("/update", authMiddleware.verifyDoctor, medical_recordController.update);
-router.delete("/delete", authMiddleware.verifyDoctor, medical_recordController.delete);
+router.get("/getAll", authMiddleware.verifyRoles([userRole.DOCTOR, userRole.PHARMACIST]), medical_recordController.getAll);
+router.get("/getById/:id", authMiddleware.verifyRoles([userRole.DOCTOR, userRole.PHARMACIST]), medical_recordController.getById);
+router.post("/add", authMiddleware.verifyRoles(userRole.DOCTOR), medical_recordController.add);
+router.put("/update", authMiddleware.verifyRoles(userRole.DOCTOR), medical_recordController.update);
 
 module.exports = router;
