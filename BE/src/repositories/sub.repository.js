@@ -34,10 +34,28 @@ class Medical_RecordRepository extends BaseRepository {
     }
 }
 
+class CartRepository extends BaseRepository {
+    constructor() {
+        super("Cart");
+    }
+
+    async getCartByCustomerId(currentCustomerId) {
+        return await this.model.findOne({ customer_id: currentCustomerId });
+    }
+}
+
+// class OrderRepository extends BaseRepository {
+//     constructor() {
+//         super("Order");
+//     }
+// }
+
 module.exports = {
     userRepository: new UserRepository(),
     appointmentRepository: new AppointmentRepository(),
     comesticRepository: new ComesticRepository(),
     medicineRepository: new MedicineRepository(),
-    medical_RecordRepository: new Medical_RecordRepository()
+    medical_RecordRepository: new Medical_RecordRepository(),
+    cartRepository: new CartRepository()
+    //orderRepository : new OrderRepository()
 };

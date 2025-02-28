@@ -21,19 +21,14 @@ class appointmentService {
                 User.findById(entity.doctor_id)
             ]);
     
-            if (!existingCustomer) {
-                const error = new Error("Không tìm thấy bác sĩ này");
-                error.status = 404; 
-                throw error;
-            }
+            if (!existingCustomer) 
+                throw Object.assign(new Error("Không tìm thấy khách hàng này"), { status: 404 });
 
-            if (!existingDoctor){
-                const error = new Error("Không tìm thấy bác sĩ này");
-                error.status = 404; 
-                throw error;
-            }
+            if (!existingDoctor)
+                throw Object.assign(new Error("Không tìm thấy bác sĩ này"), { status: 404 });
     
             entity.customer_id = customer_id;
+            
             await _repository.appointmentRepository.add(entity);
             return "Thêm thành công";
     }
