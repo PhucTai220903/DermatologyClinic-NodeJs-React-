@@ -49,7 +49,7 @@ class OrderRepository extends BaseRepository {
         super("Order");
     }
 
-    async getOrdersByCustomerId(currentCustomerId) {
+    async getByCustomerId(currentCustomerId) {
         return await this.model.find({ customer_id: currentCustomerId });
     }
 }

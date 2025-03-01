@@ -6,8 +6,9 @@ const orderSchema = new mongoose.Schema({
         type: [
             {
                 item_id: { type: mongoose.Schema.Types.ObjectId, required: true },
+                item_name: { type: String, required: true },
                 type: { type: String, enum: ["medicine", "comestic", "treatment"], required: true },
-                quantity: { type: Number},
+                quantity: { type: Number },
                 price: { type: Number, required: true }
             }
         ],

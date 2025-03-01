@@ -6,6 +6,8 @@ const userRole = require("../enums/userRole.enum")
 
 router.get("/getAll", orderController.getAll);
 router.get("/getById/:id", orderController.getById);
-router.post("/add", authMiddleware.verifyRoles(userRole.PHARMACIST,userRole.CUSTOMER), orderController.add);
+router.get("/getByCustomerId/:id",authMiddleware.verifyRoles([userRole.PHARMACIST,userRole.CUSTOMER]),orderController.getByCustomerId); // cho pharmacist
+router.get("/getByCustomerId",authMiddleware.verifyRoles(userRole.CUSTOMER),orderController.getByCustomerId); // cho customer
+router.post("/add", authMiddleware.verifyRoles([userRole.PHARMACIST,userRole.CUSTOMER]), orderController.add);
 
 module.exports = router;

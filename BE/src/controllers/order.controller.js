@@ -1,4 +1,5 @@
 const _orderService = require("../services/order.service");
+const UserRoleENUM = require("../enums/userRole.enum");
 
 exports.getAll = async (req, res) => {
     try {
@@ -9,7 +10,15 @@ exports.getAll = async (req, res) => {
     }
 }
 
-//exports.getByCustomerId = async (req,res)
+exports.getByCustomerId = async (req, res) => {
+    try {
+        const id = req.user.role === UserRoleENUM.CUSTOMER ? req.user.id : req.params.id;
+        const orders = await _orderService.getByCustomerId(id);
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(err.status || 500).json({ message: err.message || "Lỗi server" });
+    }
+};
 
 exports.add = async (req, res) => {
     try {
@@ -24,7 +33,7 @@ exports.add = async (req, res) => {
 exports.getById = async (req, res) => {
     try {
         const orderToGet = await _orderService.getById(req.params.id);
-        res.status(200).json({ orderToGet });
+        res.status(200).json(orderToGet);
     } catch (err) {
         res.status(err.status).json({ message: err.message });
     }
