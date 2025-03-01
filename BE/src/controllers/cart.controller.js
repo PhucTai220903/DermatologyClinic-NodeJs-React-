@@ -4,7 +4,7 @@ exports.getByCusomterId = async (req, res) => {
     try {
         const { id } = req.user;
         const cartToGet = await _cartService.getByCustomerId(id);
-        res.status(200).json({ cartToGet });
+        res.status(200).json(cartToGet);
     } catch (err) {
         res.status(err.status).json({ message: err.message });
     }

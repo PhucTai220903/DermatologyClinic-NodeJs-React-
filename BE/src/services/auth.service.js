@@ -7,7 +7,7 @@ const userRole = require("../enums/userRole.enum");
 
 const generateToken = (user) => {
     return jwt.sign(
-        { id: user.id, age: user.age,name:user.name, role: user.role},
+        { id: user.id, age: user.age, name: user.name, role: user.role },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -17,14 +17,13 @@ const generateToken = (user) => {
 //     return jwt.verify(token, process.env.JWT_SECRET);
 // };
 
-exports.register = async (newUserRequest) =>
-{
-        const existingUser = await User.findOne({ email: newUserRequest.email });
-        if (existingUser) throw new Error("Email đã tồn tại");
+exports.register = async (newUserRequest) => {
+    const existingUser = await User.findOne({ email: newUserRequest.email });
+    if (existingUser) throw new Error("Email đã tồn tại");
 
-        const hashedPassword = await bcrypt.hash(newUserRequest.password, 10);
-        newUserRequest.password = hashedPassword;
-        await _repository.userRepository.add(newUserRequest);
+    const hashedPassword = await bcrypt.hash(newUserRequest.password, 10);
+    newUserRequest.password = hashedPassword;
+    await _repository.userRepository.add(newUserRequest);
 }
 
 exports.login = async (name, password) => {

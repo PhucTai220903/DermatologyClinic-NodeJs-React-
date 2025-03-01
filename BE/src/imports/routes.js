@@ -5,6 +5,8 @@ const appointmentRoutes = require("../routes/appointment.route");
 const medicineRoutes = require("../routes/medicine.route");
 const medical_recordRoutes = require("../routes/medical_record.route");
 const cart = require("../routes/cart.route");
+const order = require("../routes/order.route");
+const treatment = require("../routes/treatment.route");
 
 module.exports = {
     comesticRoutes,
@@ -13,5 +15,7 @@ module.exports = {
     appointmentRoutes,
     medicineRoutes,
     medical_recordRoutes,
-    cart
+    cart,
+    order,
+    treatment
 };

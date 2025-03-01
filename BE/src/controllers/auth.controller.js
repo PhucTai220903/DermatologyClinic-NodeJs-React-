@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
     }
 };
 
-exports.logout = async (req, res) => {
+exports.logout = async (res) => {
     try {
         res.clearCookie("token");
         res.json({ message: "Đăng xuất thành công" });

@@ -44,11 +44,21 @@ class CartRepository extends BaseRepository {
     }
 }
 
-// class OrderRepository extends BaseRepository {
-//     constructor() {
-//         super("Order");
-//     }
-// }
+class OrderRepository extends BaseRepository {
+    constructor() {
+        super("Order");
+    }
+
+    async getOrdersByCustomerId(currentCustomerId) {
+        return await this.model.find({ customer_id: currentCustomerId });
+    }
+}
+
+class TreatmentRepository extends BaseRepository{
+    constructor() {
+        super("Treatment");
+    }
+}
 
 module.exports = {
     userRepository: new UserRepository(),
@@ -56,6 +66,7 @@ module.exports = {
     comesticRepository: new ComesticRepository(),
     medicineRepository: new MedicineRepository(),
     medical_RecordRepository: new Medical_RecordRepository(),
-    cartRepository: new CartRepository()
-    //orderRepository : new OrderRepository()
+    cartRepository: new CartRepository(),
+    orderRepository: new OrderRepository(),
+    treatmentRepository: new TreatmentRepository()
 };

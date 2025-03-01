@@ -11,17 +11,17 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
     try {
-      const { id } = req.body; 
-      if (!id) {
-        return res.status(400).json({ message: "Thiếu ID người dùng" });
-      }
-      
-      const user = await _userService.getById(id);
-      res.json(user);
+        const { id } = req.body;
+        if (!id) {
+            return res.status(400).json({ message: "Thiếu ID người dùng" });
+        }
+
+        const user = await _userService.getById(id);
+        res.json(user);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi server", error });
+        res.status(500).json({ message: "Lỗi server", error });
     }
-  };
+};
 
 exports.add = async (req, res) => {
     try {
@@ -55,7 +55,7 @@ exports.delete = async (req, res) => {
 exports.getProfile = (req, res) => {
     res.json({
         message: "Thông tin người dùng",
-        user: req.user, 
+        user: req.user,
         token: req.cookies
     });
 };

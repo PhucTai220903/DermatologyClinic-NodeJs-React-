@@ -24,7 +24,8 @@ app.use("/api/comestic", route.comesticRoutes);
 app.use("/api/appointment", route.appointmentRoutes);
 app.use("/api/medicine", route.medicineRoutes);
 app.use("/api/medical_record", route.medical_recordRoutes);
-app.use("/api/cart",route.cart);
+app.use("/api/cart", route.cart);
+app.use("/api/treatment", route.treatment);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

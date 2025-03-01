@@ -4,6 +4,8 @@ const User = require("./user.model");
 const Medicine = require("./medicine.model");
 const Medical_Record = require("./medical_record.model");
 const Cart = require("./cart.model");
+const Order = require("./order.model");
+const Treatment = require("./treatment.model");
 
 module.exports = {
     Appointment,
@@ -11,5 +13,7 @@ module.exports = {
     User,
     Medicine,
     Medical_Record,
-    Cart
+    Cart,
+    Order,
+    Treatment
 };
