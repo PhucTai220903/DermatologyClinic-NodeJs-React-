@@ -20,12 +20,22 @@ class ComesticRepository extends BaseRepository {
     async sortByPrice(type) {
         return await this.model.find().sort({ price: type }); // 1 để sắp xếp tăng dần, -1 để sắp xếp giảm dần
     }
+
+    async updateQuantity(id, quantity) {
+        return await this.model.findByIdAndUpdate(id, { $inc: { quantity: -quantity } }, { new: true });
+    }
+    
 }
 
 class MedicineRepository extends BaseRepository {
     constructor() {
         super("Medicine");
     }
+
+    async updateQuantity(id, quantity) {
+        return await this.model.findByIdAndUpdate(id, { $inc: { quantity: -quantity } }, { new: true });
+    }
+    
 }
 
 class Medical_RecordRepository extends BaseRepository {
@@ -60,6 +70,12 @@ class TreatmentRepository extends BaseRepository{
     }
 }
 
+class TransactionRepository extends BaseRepository{
+    constructor() {
+        super("Transaction");
+    }
+}
+
 module.exports = {
     userRepository: new UserRepository(),
     appointmentRepository: new AppointmentRepository(),
@@ -68,5 +84,6 @@ module.exports = {
     medical_RecordRepository: new Medical_RecordRepository(),
     cartRepository: new CartRepository(),
     orderRepository: new OrderRepository(),
-    treatmentRepository: new TreatmentRepository()
+    treatmentRepository: new TreatmentRepository(),
+    transactionRepository: new TransactionRepository()
 };

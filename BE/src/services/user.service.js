@@ -17,7 +17,6 @@ class UserService {
     async update(id, entity) {
         await _repository.userRepository.update(id, entity);
         return "Đã cập nhật thành công";
-
     }
 
     async delete(id) {

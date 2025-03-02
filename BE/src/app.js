@@ -27,6 +27,7 @@ app.use("/api/medical_record", route.medical_recordRoutes);
 app.use("/api/cart", route.cart);
 app.use("/api/treatment", route.treatment);
 app.use("/api/order",route.order);
+app.use("/api/transaction",route.transaction);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

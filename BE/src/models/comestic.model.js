@@ -4,7 +4,7 @@ const comesticSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    stock: { type: Number, required: true },
+    quantity: { type: Number, required: true },
     averageRating: { type: Number, default: 0, min: 0, max: 5 },
     isHidden: { type: Boolean, default: false },
     reviews: [

@@ -17,8 +17,6 @@ const orderSchema = new mongoose.Schema({
     total_amount: { type: Number, required: true },
     discount_applied: { type: Number, required: true },
     final_amount: { type: Number, required: true },
-    payment_method: { type: String, enum: ["cash", "e-wallet"], required: true },
-    status: { type: String, enum: ["pending", "completed", "cancelled"], default: "pending", required: true }
 }, { timestamps: true });
 
 const Order = mongoose.model("Order", orderSchema);
