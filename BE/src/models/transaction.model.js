@@ -7,7 +7,7 @@ const TransactionSchema = mongoose.Schema({
     points_earned: {type: Number, required: true},
     points_used:{type:Number, required: true},
     payment_method: { type: String, enum: ["cash", "e-wallet"], required: true },
-    status: { type: String, enum: ["refund", "completed", "cancelled"], default:"completed", required: true }
+    status: { type: String, enum: ["refund", "completed", "cancelled","considering_refund","refund_successfully"], default:"completed", required: true }
 },{ timestamps: true });
 
 const Transaction = mongoose.model("Transaction",TransactionSchema);

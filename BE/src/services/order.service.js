@@ -27,6 +27,7 @@ class OrderService {
         let totalAmount = 0;
 
         let itemsWithDetails = [];
+        let updatePromises =[];
 
         for (const item of orderRequest.items) {
             let itemTotal = item.price * (item.quantity || 1);
