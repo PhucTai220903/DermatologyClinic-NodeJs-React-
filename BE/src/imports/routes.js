@@ -8,6 +8,7 @@ const cart = require("../routes/cart.route");
 const order = require("../routes/order.route");
 const treatment = require("../routes/treatment.route");
 const transaction = require("../routes/transaction.route");
+const statistic = require("../routes/statistic.route");
 
 module.exports = {
     comesticRoutes,
@@ -19,5 +20,6 @@ module.exports = {
     cart,
     order,
     treatment,
-    transaction
+    transaction,
+    statistic
 };
