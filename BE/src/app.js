@@ -28,6 +28,7 @@ app.use("/api/cart", route.cart);
 app.use("/api/treatment", route.treatment);
 app.use("/api/order",route.order);
 app.use("/api/transaction",route.transaction);
+app.use("/api/statistic",route.statistic);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

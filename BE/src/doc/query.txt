@@ -1,0 +1,12 @@
+* reduce() là một phương thức của mảng giúp tính toán một giá trị duy nhất bằng cách lặp qua từng phần tử trong mảng và tích lũy kết quả.
+array.reduce((accumulator, currentValue, currentIndex, array) => {
+    // Logic xử lý
+    return accumulator;
+}, initialValue);
+
+EX:
+[].reduce((sum, transaction) => sum + transaction.amount, 0);
+
++ sum (accumulator): Tổng doanh thu được cập nhật sau mỗi vòng lặp.
++ transaction.amount: Giá trị amount của từng giao dịch.
++ 0: Giá trị khởi tạo của sum.

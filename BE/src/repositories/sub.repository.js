@@ -1,4 +1,5 @@
 const BaseRepository = require("./base.repository");
+const dayjs = require('dayjs');
 
 class UserRepository extends BaseRepository {
     constructor() {
@@ -73,6 +74,27 @@ class TreatmentRepository extends BaseRepository{
 class TransactionRepository extends BaseRepository{
     constructor() {
         super("Transaction");
+    }
+
+    async getByDate(date) {
+        const startOfDay = dayjs(date).startOf('day').toDate();
+        const endOfDay = dayjs(date).endOf('day').toDate();
+    
+        return await this.model.find({ 
+            createdAt: { $gte: startOfDay, $lte: endOfDay } 
+        });
+    }
+
+    async getByWeek(startOfWeek, endOfWeek) {
+        return await this.model.find({
+            createdAt: { $gte: startOfWeek, $lte: endOfWeek }
+        });
+    }
+
+    async getByMonth(month, year) {
+        const startOfMonth = moment(`${year}-${month}-01`).startOf("month").toDate();
+        const endOfMonth = moment(`${year}-${month}-01`).endOf("month").toDate();
+        return await this.model.find({ createdAt: { $gte: startOfMonth, $lte: endOfMonth } });
     }
 }
 
