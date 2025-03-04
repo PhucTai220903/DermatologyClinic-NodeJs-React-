@@ -2,7 +2,6 @@ const UserRoleENUM = require("../enums/userRole.enum");
 const _repository = require("../repositories/sub.repository");
 const Order = require("../models/order.model");
 const Membership_levelENUM = require("../enums/membership_level.enum");
-const Status_Transaction_ENUM = require("../enums/status_transaction.enum");
 const _transactionService = require("../services/transaction.service");
 const { Transaction } = require("../models");
 
@@ -27,7 +26,6 @@ class OrderService {
         let totalAmount = 0;
 
         let itemsWithDetails = [];
-        let updatePromises =[];
 
         for (const item of orderRequest.items) {
             let itemTotal = item.price * (item.quantity || 1);

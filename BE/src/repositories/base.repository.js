@@ -21,6 +21,11 @@ class BaseRepository {
         return await this.model.findOne({ name: entityName });
     }
     
+    async find(entity_ids)
+    {
+        return await this.model.find({_id: { $in: entity_ids}}); // use $in for faster query
+    }
+
     async add(data) {
         const item = new this.model(data);
         return await item.save();
