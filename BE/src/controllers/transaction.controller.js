@@ -1,3 +1,4 @@
+const UserRoleENUM = require("../enums/userRole.enum");
 const _transactionService = require("../services/transaction.service");
 
 exports.getAll = async (req, res) => {
@@ -30,8 +31,18 @@ exports.add = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const transactionToUpdate = await _transactionService.update(req.body);
+        const id  = req.user.role === UserRoleENUM.CUSTOMER ? req.user.id : null;
+        const transactionToUpdate = await _transactionService.update(id, req.body);
         res.status(200).json({ message: transactionToUpdate });
+    } catch (err) {
+        res.status(err.status).json({ message: err.message });
+    }
+}
+
+exports.updateStatus = async (req, res) => {
+    try {
+        const orderToUpdate = await _orderService.update(req.body);
+        res.status(200).json(orderToUpdate);
     } catch (err) {
         res.status(err.status).json({ message: err.message });
     }

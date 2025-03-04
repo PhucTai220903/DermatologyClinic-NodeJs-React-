@@ -38,3 +38,11 @@ exports.update = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
+
+exports.export_record = async (req, res) => {
+    try {
+        await _medical_recordService.export_record(req.body.medical_record_id, res);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
