@@ -33,7 +33,6 @@ class Medical_RecordService {
         if (!recordToExport)
             throw Object.assign(new Error("Không tìm thấy hồ sơ bệnh án này"), { status: 404 });
 
-        // Lấy thông tin khách hàng & bác sĩ từ UserRepository
         const [customer_info, doctor_info] = await Promise.all([
             _repository.userRepository.getById(recordToExport.customer_id),
             _repository.userRepository.getById(recordToExport.doctor_id),
@@ -53,14 +52,12 @@ class Medical_RecordService {
         // Tiêu đề hồ sơ bệnh án
         doc.fontSize(18).text(`Medical Record: ${recordToExport.id}`, { align: "center" });
 
-        // Thông tin khách hàng & bác sĩ
         doc.moveDown();
         doc.fontSize(12).text(`Customer Name: ${customer_info?.name || "Unknown"}`);
         doc.text(`Doctor: ${doctor_info?.name || "Unknown"}`);
         doc.text(`Diagnosis: ${recordToExport.diagnosis}`);
         doc.text(`Created At: ${recordToExport.createdAt}`);
 
-        // Nếu có đơn thuốc, in bảng
         if (recordToExport.prescription && recordToExport.prescription.length > 0) {
             doc.moveDown();
             doc.fontSize(14).text("Prescription Details:", { underline: true });

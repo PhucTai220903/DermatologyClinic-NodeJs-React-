@@ -98,6 +98,27 @@ class TransactionRepository extends BaseRepository{
     }
 }
 
+class ScheduleRepository extends BaseRepository{
+    constructor() {
+        super("Schedule");
+    }
+
+    async getDoctorsByDate(date) {
+    const startOfDay = dayjs(date).startOf("day").toDate();
+    const endOfDay = dayjs(date).endOf("day").toDate();
+
+    return await this.model.find({
+        "schedules.schedule_date": { $gte: startOfDay, $lt: endOfDay }, //$ gte: greater than or equal. $lt: less than
+        "schedules.status": "available"
+    })
+    .populate("doctor", "name") // Lấy name từ bảng User
+    .select("doctor -_id"); // Loại bỏ `_id` của `Schedule`
+    // Giải thích thêm trong file
+}
+
+
+}
+
 module.exports = {
     userRepository: new UserRepository(),
     appointmentRepository: new AppointmentRepository(),
@@ -107,5 +128,6 @@ module.exports = {
     cartRepository: new CartRepository(),
     orderRepository: new OrderRepository(),
     treatmentRepository: new TreatmentRepository(),
-    transactionRepository: new TransactionRepository()
+    transactionRepository: new TransactionRepository(),
+    scheduleRepository: new ScheduleRepository()
 };
