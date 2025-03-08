@@ -10,3 +10,6 @@ EX:
 + sum (accumulator): Tổng doanh thu được cập nhật sau mỗi vòng lặp.
 + transaction.amount: Giá trị amount của từng giao dịch.
 + 0: Giá trị khởi tạo của sum.
+
+array.splice(start, deleteCount, item1, item2, ...); delete, item is optional
+ex: [].splice(existingReview,1); 
