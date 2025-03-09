@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const route = require("./imports/routes");
+const session = require("express-session");
+const speakeasy = require("speakeasy");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,6 +15,14 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+// Session
+app.use(session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 } // 60s
+}));
 
 // Cookies
 app.use(cookieParser());
@@ -30,6 +40,7 @@ app.use("/api/order",route.order);
 app.use("/api/transaction",route.transaction);
 app.use("/api/statistic",route.statistic);
 app.use("/api/schedule",route.schedule);
+app.use("/api/otp",route.otp);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);

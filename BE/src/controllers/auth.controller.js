@@ -1,4 +1,5 @@
 const _authService = require("../services/auth.service");
+const session = require("express-session");
 
 exports.register = async (req, res) => {
     try {
@@ -14,15 +15,18 @@ exports.login = async (req, res) => {
     try {
         const { name, password } = req.body;
 
-        const token = await _authService.login(name, password);
+        const sendOTP = await _authService.login(name, password);
+        res.status(200).json({ message: sendOTP });
 
-        res.cookie("token", token, {
+
+        /*res.cookie("token", token, {
             httpOnly: true, // Bảo mật, không thể truy cập từ frontend JavaScript
             secure: false, 
             sameSite: "strict" // Chặn truy cập từ trang khác
         });
 
-        res.json({ message: "Đăng nhập thành công", token });
+
+        res.json({ message: "Đăng nhập thành công", token });*/
     } catch (error) {
         res.status(401).json({ message: error.message });
     }
