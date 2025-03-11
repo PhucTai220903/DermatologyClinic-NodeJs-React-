@@ -1,8 +1,8 @@
 const _repository = require("../repositories/sub.repository");
 
 class UserService {
-    async getAll() {
-        return await _repository.userRepository.getAll();
+    async getAllByRole(role) {
+        return await _repository.userRepository.getAllByRole(role);
     }
 
     async getById(id) {

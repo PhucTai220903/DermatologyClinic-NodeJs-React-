@@ -5,6 +5,10 @@ class UserRepository extends BaseRepository {
     constructor() {
         super("User");
     }
+
+    async getAllByRole(role) {
+        return await this.model.find({role: role})
+    }
 }
 
 class AppointmentRepository extends BaseRepository {

@@ -1,8 +1,9 @@
 const _userService = require("../services/user.service");
 
-exports.getAll = async (req, res) => {
+exports.getAllByRole = async (req, res) => {
     try {
-        const users = await _userService.getAll();
+        const { role } = req. params;
+        const users = await _userService.getAllByRole(role);
         res.json(users);
     } catch (err) {
         res.status(500).json({ message: err.message });
