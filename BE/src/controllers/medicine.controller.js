@@ -3,7 +3,7 @@ const _medicineService = require("../services/medicine.service");
 exports.getAll = async (req, res) => {
     try {
         const medicine = await _medicineService.getAll();
-        res.json({data: medicine});
+        res.json(medicine);
     } catch (err) {
         res.status(err.status).json({ message: err.message });
     }

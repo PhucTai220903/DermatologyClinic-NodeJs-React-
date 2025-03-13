@@ -1,6 +1,6 @@
 const ComesticENUM = Object.freeze({
    CLEANSER: "cleanser",
-   MAKEUP_REMOVER:"makeup remover",
+   MAKEUP_REMOVER:"makeup_remover",
    MASK: "mask"
 });
 
