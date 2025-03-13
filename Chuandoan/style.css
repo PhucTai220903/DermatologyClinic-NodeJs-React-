@@ -1,0 +1,231 @@
+.diagnosis-page,
+.diagnosis-page * {
+  box-sizing: border-box;
+}
+.diagnosis-page {
+  background: #f5fdf8;
+  display: flex;
+  flex-direction: column;
+  gap: 207px;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2880px;
+  position: relative;
+  overflow: hidden;
+}
+.nav-bar {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 95px;
+  position: relative;
+}
+.nav-background {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 56.99728727340698%,
+    rgba(225, 249, 235, 1) 100%
+  );
+  width: 1440px;
+  height: 95px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 1257px;
+  position: absolute;
+  left: 148px;
+  top: 20px;
+}
+.nav-items {
+  padding: 0px 6.66px 0px 6.66px;
+  display: flex;
+  flex-direction: row;
+  gap: 47.58px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1094px;
+  position: relative;
+}
+.logo {
+  flex-shrink: 0;
+  width: 194px;
+  height: 40px;
+  position: static;
+}
+.clinic-name {
+  color: #f3617a;
+  text-align: left;
+  position: absolute;
+  left: -22.75px;
+  top: 0px;
+  width: 194px;
+  height: 40px;
+}
+.clinic-name-part1 {
+  color: #f3617a;
+  font-family: "NunitoSans-Regular", sans-serif;
+  font-size: 19.03317642211914px;
+  font-weight: 400;
+}
+.clinic-name-part2 {
+  color: #f3617a;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.clinic-name-part3 {
+  color: #f3617a;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+.home-page {
+  color: var(--textclour-black, #19191a);
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 32.36px;
+  font-weight: 700;
+  position: relative;
+  width: 96px;
+}
+.products {
+  color: #19191a;
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 32.36px;
+  font-weight: 700;
+  position: relative;
+  width: 106px;
+}
+.appointment {
+  color: #19191a;
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 32.36px;
+  font-weight: 700;
+  position: relative;
+  width: 182px;
+}
+.shopping {
+  color: #19191a;
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 32.36px;
+  font-weight: 700;
+  position: relative;
+  width: 103px;
+}
+.diagnosis {
+  color: #19191a;
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 17px;
+  line-height: 32.36px;
+  font-weight: 700;
+  position: relative;
+  width: 138px;
+}
+.shopping-cart {
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.sign-in {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 139px;
+  position: relative;
+}
+.user-name {
+  color: #f3617a;
+  text-align: left;
+  font-family: "NunitoSans-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: relative;
+}
+.user-icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 17px;
+  position: relative;
+  overflow: visible;
+}
+.intro-section {
+  background: #f9d9d9;
+  flex-shrink: 0;
+  width: 1232px;
+  height: 766px;
+  position: relative;
+  overflow: hidden;
+}
+.intro-text {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  position: absolute;
+  left: 67px;
+  top: 76px;
+  width: 1112px;
+  height: 645px;
+}
+.upload-section {
+  background: #d9d9d9;
+  flex-shrink: 0;
+  width: 1102px;
+  height: 513px;
+  position: relative;
+  overflow: hidden;
+}
+.upload-button {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 80px;
+  font-weight: 400;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+  width: 557px;
+  height: 136px;
+}
+.details-section {
+  background: #f9d9d9;
+  flex-shrink: 0;
+  width: 1232px;
+  height: 644px;
+  position: relative;
+  overflow: hidden;
+}
+.details-text {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  position: absolute;
+  left: 54px;
+  top: 77px;
+  width: 1146px;
+  height: 530px;
+}

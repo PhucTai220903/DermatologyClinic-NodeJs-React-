@@ -1,0 +1,37 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary-dark-pink: #f3617a;
+  --primary-light-green: #e1f9eb;
+  --primary-secondary-pink: #ef8e9f;
+  --textclour-black: #19191a;
+
+  /* Fonts */
+  --main-heading-font-family: OleoScriptSwashCaps-Regular, sans-serif;
+  --main-heading-font-size: 84px;
+  --main-heading-line-height: 116px;
+  --main-heading-font-weight: 400;
+  --main-heading-font-style: normal;
+  --paragraph-font-family: NunitoSans-Light, sans-serif;
+  --paragraph-font-size: 21px;
+  --paragraph-line-height: 34px;
+  --paragraph-font-weight: 300;
+  --paragraph-font-style: normal;
+  --body-font-family: NunitoSans-Regular, sans-serif;
+  --body-font-size: 22px;
+  --body-line-height: 34px;
+  --body-font-weight: 400;
+  --body-font-style: normal;
+  --headings-font-family: NunitoSans-SemiBold, sans-serif;
+  --headings-font-size: 50px;
+  --headings-line-height: 61px;
+  --headings-font-weight: 600;
+  --headings-font-style: normal;
+  --heading-h2-font-family: NunitoSans-Regular, sans-serif;
+  --heading-h2-font-size: 40px;
+  --heading-h2-line-height: 61px;
+  --heading-h2-font-weight: 400;
+  --heading-h2-font-style: normal;
+
+  /* Effects */
+}
