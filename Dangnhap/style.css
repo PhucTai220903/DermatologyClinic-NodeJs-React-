@@ -1,0 +1,101 @@
+.login-frame,
+.login-frame * {
+  box-sizing: border-box;
+}
+.login-frame {
+  background: #f9d9d9;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 1443px;
+  position: relative;
+  overflow: hidden;
+}
+.login-title {
+  color: #000000;
+  text-align: left;
+  font-family: "Pacifico-Regular", sans-serif;
+  font-size: 120px;
+  line-height: 102px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 267.5px);
+  top: 116px;
+  width: 702px;
+  height: 180px;
+}
+.username-label {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 50px;
+  line-height: 102px;
+  font-weight: 400;
+  position: absolute;
+  left: 94px;
+  top: 382px;
+  width: 390px;
+  height: 101px;
+}
+.password-label {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 50px;
+  line-height: 102px;
+  font-weight: 400;
+  position: absolute;
+  left: 94px;
+  top: 676px;
+  width: 342px;
+  height: 101px;
+}
+.username-input {
+  background: #fefcfc;
+  border-radius: 25px;
+  flex-shrink: 0;
+  width: 765px;
+  height: 90px;
+  position: absolute;
+  left: 178px;
+  top: 500px;
+}
+.password-input {
+  background: #fefcfc;
+  border-radius: 25px;
+  flex-shrink: 0;
+  width: 765px;
+  height: 90px;
+  position: absolute;
+  left: 178px;
+  top: 794px;
+}
+.login-button {
+  background: #f3617a;
+  border-radius: 30px;
+  flex-shrink: 0;
+  width: 630px;
+  height: 195px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1133px;
+  overflow: hidden;
+}
+.login-button-text {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 80px;
+  line-height: 102px;
+  font-weight: 700;
+  position: absolute;
+  left: 67px;
+  top: 41px;
+  width: 539px;
+  height: 129px;
+}
