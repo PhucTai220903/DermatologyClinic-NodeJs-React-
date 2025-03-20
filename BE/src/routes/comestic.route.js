@@ -7,7 +7,7 @@ const userRole = require("../enums/userRole.enum")
 // Products
 router.get("/getAll", comesticController.getAll);
 router.get("/getById/:id",comesticController.getById);
-router.post("/add",authMiddleware.verifyRoles(userRole.ADMIN), comesticController.addComestic);
+router.post("/add", comesticController.addComestic);
 router.post("/search", comesticController.searchComestic);
 router.post("/sort",comesticController.sortByPrice);
 router.put("/update",authMiddleware.verifyRoles(userRole.ADMIN), comesticController.updateComestic);

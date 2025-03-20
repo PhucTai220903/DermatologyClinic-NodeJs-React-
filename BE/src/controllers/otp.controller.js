@@ -15,7 +15,7 @@ exports.verifyOTP = async (req, res) => {
             secure: false, 
             sameSite: "strict"});
 
-        res.json({ message: "Đăng nhập thành công", token });
+        res.status(200).json({ message: "Đăng nhập thành công", token });
     } catch (error) {
         res.status(error.status).json({ message: error.message });
     }

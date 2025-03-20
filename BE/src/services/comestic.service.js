@@ -27,6 +27,10 @@ class ComesticService {
     }
 
     async add(entity) {
+        const existingComestic =  await _repository.comesticRepository.getByName(entity.name);
+        if(existingComestic)
+            throw Object.assign(new Error("Sản phẩm nãy đã tồn tại trước đó"), { status: 400});
+
         await _repository.comesticRepository.add(entity);
         return "Thêm thành công";
     }

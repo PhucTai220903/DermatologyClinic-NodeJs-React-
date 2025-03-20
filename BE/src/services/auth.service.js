@@ -29,7 +29,7 @@ exports.login = async (name, password) => {
     if (!user) throw new Error("Tên người dùng không tồn tại");
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) throw new Error("Sai mật khẩu");
+    if (!isMatch)  throw Object.assign(new Error("Sai mật khẩu. Vui lòng đăng nhập lại"), { status: 401 });
 
     session.user = { id: user.id, name: user.name, role: user.role, email: user.email };
 
