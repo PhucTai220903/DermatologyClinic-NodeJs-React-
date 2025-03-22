@@ -134,6 +134,10 @@ class ScheduleRepository extends BaseRepository {
       .select("doctor -_id"); // Loại bỏ `_id` của `Schedule`
     // Giải thích thêm trong file
   }
+
+  async getByDoctorId(_id) {
+    return await this.model.find({ doctor: _id });
+  }
 }
 
 module.exports = {
