@@ -14,10 +14,10 @@ class ComesticService {
       comesticName
     );
 
-    if (!cosmestic) {
-      const error = new Error("Không tìm thấy sản phẩm");
-      error.status = 404;
-      throw error;
+    if (cosmestic.length === 0) {
+      throw Object.assign(new Error("Không tìm thấy sản phẩm"), {
+        status: 404,
+      });
     }
 
     return cosmestic;

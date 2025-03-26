@@ -10,6 +10,10 @@ class appointmentService {
     return await _repository.appointmentRepository.getById(id);
   }
 
+  async getByStatus(status) {
+    return await _repository.appointmentRepository.getByStatus(status);
+  }
+
   async add(customer_id, entity) {
     if (!entity || !customer_id || !entity.doctor_id) {
       throw new Error("Dữ liệu không hợp lệ");

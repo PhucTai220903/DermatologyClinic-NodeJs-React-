@@ -14,7 +14,7 @@ exports.getById = async (req, res) => {
     const { id } = req.params;
 
     const medical_record = await _medical_recordService.getById(id);
-    res.json(medical_record);
+    res.status(200).json(medical_record);
   } catch (error) {
     res.status(error.status).json({ message: error.message });
   }
@@ -35,7 +35,9 @@ exports.add = async (req, res) => {
   try {
     const { id } = req.user;
     const medical_recordToAdd = await _medical_recordService.add(id, req.body);
-    res.status(200).json({ message: medical_recordToAdd });
+    res.status(201).json({
+      message: medical_recordToAdd.message,
+    });
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }

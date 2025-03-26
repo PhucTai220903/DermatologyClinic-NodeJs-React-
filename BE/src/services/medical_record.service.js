@@ -17,7 +17,21 @@ class Medical_RecordService {
 
   async add(currentUserId, entity) {
     entity.doctor_id = currentUserId;
-    await _repository.medical_RecordRepository.add(entity);
+    const appointment_id = entity.appointment_id ?? null;
+
+    if (entity.appointment_id) {
+      delete entity.appointment_id;
+    }
+    const medical_recordToAdd = await _repository.medical_RecordRepository.add(
+      entity
+    );
+
+    // Update thêm medical_record vào appointment
+    await _repository.appointmentRepository.addMedical_record_id(
+      appointment_id,
+      medical_recordToAdd._id
+    );
+
     return "Thêm thành công";
   }
 

@@ -56,7 +56,7 @@ exports.deleteComestic = async (req, res) => {
   }
 };
 
-exports.searchComestic = async (req, res) => {
+exports.searchByName = async (req, res) => {
   try {
     const comesticToSearch = await _comesticService.searchByName(req.body.name);
     res.json(comesticToSearch);

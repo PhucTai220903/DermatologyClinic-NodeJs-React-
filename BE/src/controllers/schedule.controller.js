@@ -24,7 +24,7 @@ exports.add = async (req, res) => {
     const { id } = req.user;
     const dateToSchedule = req.body;
     const schedule = await _scheduleService.add(id, dateToSchedule);
-    res.json(schedule);
+    res.status(200).json({ message: schedule });
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }

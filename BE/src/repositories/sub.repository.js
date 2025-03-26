@@ -15,6 +15,18 @@ class AppointmentRepository extends BaseRepository {
   constructor() {
     super("Appointment");
   }
+
+  async getByStatus(status) {
+    return await this.model.find({ status: status });
+  }
+
+  async addMedical_record_id(appointment_id, medical_record_id) {
+    return await this.model.findByIdAndUpdate(
+      appointment_id,
+      { medical_record_id },
+      { new: true }
+    );
+  }
 }
 
 class ComesticRepository extends BaseRepository {
