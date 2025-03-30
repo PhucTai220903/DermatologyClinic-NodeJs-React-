@@ -152,7 +152,6 @@ class Medical_RecordService {
       doc.fontSize(12).text(recordToExport.notes);
     }
 
-    // Đợi file PDF hoàn thành rồi mới kết thúc response
     doc.end();
     doc.on("finish", function () {
       res.end();

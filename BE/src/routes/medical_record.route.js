@@ -20,11 +20,7 @@ router.post(
   authMiddleware.verifyRoles(userRole.DOCTOR),
   medical_recordController.add
 );
-router.post(
-  "/export_record",
-  authMiddleware.verifyRoles([userRole.CUSTOMER, userRole.PHARMACIST]),
-  medical_recordController.export_record
-);
+router.post("/export_record", medical_recordController.export_record);
 router.put(
   "/update",
   authMiddleware.verifyRoles(userRole.DOCTOR),
