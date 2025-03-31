@@ -75,6 +75,13 @@ Cách dùng populate()	                                                        M
 .populate({ path: "author", select: "name", match: { name: "John Doe" } })	    Chỉ lấy author có name = John Doe
 .populate({ path: "author", options: { limit: 5, sort: { name: 1 } } })	        Giới hạn 5 author, sắp xếp theo name
 
+3. array.sort(callback)
+(a, b) => someNumber
+Nếu:
 
+someNumber < 0: a đứng trước b
+someNumber > 0: b đứng trước a
+someNumber === 0: Giữ nguyên vị trí
+EX:  comesticToGet.reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
 
