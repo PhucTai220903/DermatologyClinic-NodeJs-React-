@@ -25,7 +25,7 @@ exports.getById = async (req, res) => {
 exports.addComestic = async (req, res) => {
   try {
     const comesticToAdd = await _comesticService.add(req.body);
-    res.status(200).json({ message: comesticToAdd });
+    res.status(201).json({ message: comesticToAdd });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -39,7 +39,7 @@ exports.updateComestic = async (req, res) => {
     );
     if (!updateComestic)
       return res.status(404).json({ message: "Không tồn tại mỹ phẩm này" });
-    res.json({ message: updateComestic });
+    res.status(200).json({ message: updateComestic });
   } catch (error) {
     res.status(400).json({ message: err.message });
   }
