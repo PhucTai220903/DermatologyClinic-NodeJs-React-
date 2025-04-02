@@ -17,7 +17,7 @@ class appointmentService {
   async add(customer_id, entity) {
     // Validate dữ liệu đầu vào
     if (!entity || !customer_id || !entity.doctor_id) {
-      throw Object.assign(new Error("Dữ liệu không hợp lệ"), { status: 400 });
+      throw Object.assign(new Error("Không được để trống"), { status: 400 });
     }
 
     // Validate ngày hẹn
@@ -29,14 +29,19 @@ class appointmentService {
     const appointmentDate = new Date(entity.date);
     const currentDate = new Date();
     if (appointmentDate < currentDate) {
-      throw Object.assign(new Error("Ngày hẹn không được trong quá khứ"), { status: 400 });
+      throw Object.assign(new Error("Ngày hẹn không được trong quá khứ"), {
+        status: 400,
+      });
     }
 
     // Kiểm tra ngày hẹn không được quá xa trong tương lai (ví dụ: 3 tháng)
     const maxFutureDate = new Date();
     maxFutureDate.setMonth(maxFutureDate.getMonth() + 3);
     if (appointmentDate > maxFutureDate) {
-      throw Object.assign(new Error("Ngày hẹn không được quá 3 tháng trong tương lai"), { status: 400 });
+      throw Object.assign(
+        new Error("Ngày hẹn không được quá 3 tháng trong tương lai"),
+        { status: 400 }
+      );
     }
 
     // Tìm cả khách hàng và bác sĩ cùng lúc để tối ưu tốc độ
@@ -47,39 +52,57 @@ class appointmentService {
 
     // Kiểm tra khách hàng
     if (!existingCustomer) {
-      throw Object.assign(new Error("Không tìm thấy khách hàng này"), { status: 404 });
+      throw Object.assign(new Error("Không tìm thấy khách hàng này"), {
+        status: 404,
+      });
     }
     if (existingCustomer.status === "banned") {
-      throw Object.assign(new Error("Tài khoản của bạn đã bị khóa"), { status: 403 });
+      throw Object.assign(new Error("Tài khoản của bạn đã bị khóa"), {
+        status: 403,
+      });
     }
 
     // Kiểm tra bác sĩ
     if (!existingDoctor) {
-      throw Object.assign(new Error("Không tìm thấy bác sĩ này"), { status: 404 });
+      throw Object.assign(new Error("Không tìm thấy bác sĩ này"), {
+        status: 404,
+      });
     }
     if (existingDoctor.role !== "doctor") {
-      throw Object.assign(new Error("Người được chọn không phải là bác sĩ"), { status: 400 });
+      throw Object.assign(new Error("Người được chọn không phải là bác sĩ"), {
+        status: 400,
+      });
     }
     if (existingDoctor.status === "banned") {
-      throw Object.assign(new Error("Tài khoản bác sĩ đã bị khóa"), { status: 403 });
+      throw Object.assign(new Error("Tài khoản bác sĩ đã bị khóa"), {
+        status: 403,
+      });
     }
 
     // Kiểm tra lịch trùng
-    const existingAppointments = await _repository.appointmentRepository.findByDoctorAndDate(
-      entity.doctor_id,
-      appointmentDate
-    );
+    const existingAppointments =
+      await _repository.appointmentRepository.findByDoctorAndDate(
+        entity.doctor_id,
+        appointmentDate
+      );
     if (existingAppointments.length > 0) {
-      throw Object.assign(new Error("Bác sĩ đã có lịch hẹn vào thời gian này"), { status: 400 });
+      throw Object.assign(
+        new Error("Bác sĩ đã có lịch hẹn vào thời gian này"),
+        { status: 400 }
+      );
     }
 
     // Kiểm tra số lần đặt lịch của khách hàng trong ngày
-    const customerAppointments = await _repository.appointmentRepository.findByCustomerAndDate(
-      customer_id,
-      appointmentDate
-    );
+    const customerAppointments =
+      await _repository.appointmentRepository.findByCustomerAndDate(
+        customer_id,
+        appointmentDate
+      );
     if (customerAppointments.length >= 2) {
-      throw Object.assign(new Error("Bạn đã đặt tối đa 2 lịch hẹn trong ngày này"), { status: 400 });
+      throw Object.assign(
+        new Error("Bạn đã đặt tối đa 2 lịch hẹn trong ngày này"),
+        { status: 400 }
+      );
     }
 
     // Thêm thông tin khách hàng vào entity

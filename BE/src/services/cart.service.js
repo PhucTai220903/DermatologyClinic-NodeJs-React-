@@ -105,7 +105,7 @@ class CartService {
 
     if (!deletedItem)
       throw Object.assign(
-        new Error("Không tìm thấy sản phẩm này trong giỏ hàngg"),
+        new Error("Không tìm thấy sản phẩm này trong giỏ hàng"),
         { status: 404 }
       );
     existingCart.items.splice(deletedItem, 1);

@@ -11,8 +11,8 @@ router.post("/add", comesticController.addComestic);
 router.post("/searchByName", comesticController.searchByName);
 router.post("/sort", comesticController.sortByPrice);
 router.put(
-  "/update",
-  authMiddleware.verifyRoles(userRole.ADMIN),
+  "/update/:id",
+  //authMiddleware.verifyRoles(userRole.ADMIN),
   comesticController.updateComestic
 );
 router.delete(

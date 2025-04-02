@@ -35,10 +35,17 @@ exports.register = async (newUserRequest) => {
   }
 
   // Validate name
-  if (!newUserRequest.name || newUserRequest.name.trim().length < 2) {
-    throw Object.assign(new Error("Tên phải có ít nhất 2 ký tự"), {
-      status: 400,
-    });
+  if (
+    !newUserRequest.name ||
+    newUserRequest.name.trim().length < 2 ||
+    newUserRequest.name.trim().length > 30
+  ) {
+    throw Object.assign(
+      new Error("Tên phải có ít nhất 2 ký tự và ít hơn 30 ký tự"),
+      {
+        status: 400,
+      }
+    );
   }
 
   // Validate age
