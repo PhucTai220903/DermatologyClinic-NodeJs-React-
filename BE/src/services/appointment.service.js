@@ -80,14 +80,14 @@ class appointmentService {
     }
 
     // Kiểm tra lịch trùng
-    const exsistingSchedule =
-      await _repository.scheduleRepository.getDoctorsByDate(appointmentDate);
-    if (exsistingSchedule.length === 0) {
-      throw Object.assign(
-        new Error("Bác sĩ không có lịch làm việc vào thời gian này"),
-        { status: 400 }
-      );
-    }
+    // const exsistingSchedule =
+    //   await _repository.scheduleRepository.getDoctorsByDate(appointmentDate);
+    // if (exsistingSchedule.length === 0) {
+    //   throw Object.assign(
+    //     new Error("Bác sĩ không có lịch làm việc vào thời gian này"),
+    //     { status: 400 }
+    //   );
+    // }
 
     // Kiểm tra số lần đặt lịch của khách hàng trong ngày
     /*const customerAppointments =
