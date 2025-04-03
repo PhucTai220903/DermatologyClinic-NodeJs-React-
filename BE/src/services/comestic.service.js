@@ -120,6 +120,13 @@ class ComesticService {
       });
     }
 
+    // Validate trống input
+    if (entity.name === "") {
+      throw Object.assign(new Error("Tên sản phẩm không được để trống"), {
+        status: 400,
+      });
+    }
+
     // Validate tên sản phẩm nếu có thay đổi
     if (entity.name && entity.name !== existingProduct.name) {
       if (entity.name.trim().length < 2) {

@@ -1,5 +1,6 @@
 const BaseRepository = require("./base.repository");
 const dayjs = require("dayjs");
+const mongoose = require("mongoose");
 
 class UserRepository extends BaseRepository {
   constructor() {
