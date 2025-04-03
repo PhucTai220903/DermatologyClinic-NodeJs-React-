@@ -6,6 +6,22 @@ class UserRepository extends BaseRepository {
     super("User");
   }
 
+  async getDoctorsByDate(date) {
+    const startOfDay = dayjs(date).startOf("day").toDate();
+    const endOfDay = dayjs(date).endOf("day").toDate();
+
+    const schedules = await mongoose
+      .model("Schedule")
+      .find({
+        "schedules.schedule_date": { $gte: startOfDay, $lt: endOfDay },
+        "schedules.status": "available",
+      })
+      .populate("doctor", "name")
+      .select("doctor -_id");
+
+    return schedules;
+  }
+
   async getAllByRole(role) {
     return await this.model.find({ role: role });
   }
@@ -139,8 +155,8 @@ class ScheduleRepository extends BaseRepository {
 
     return await this.model
       .find({
-        "schedules.schedule_date": { $gte: startOfDay, $lt: endOfDay }, //$ gte: greater than or equal. $lt: less than
-        "schedules.status": "available",
+        schedule_date: { $gte: startOfDay, $lt: endOfDay }, //$ gte: greater than or equal. $lt: less than
+        status: "available",
       })
       .populate("doctor", "name") // Lấy name từ bảng User
       .select("doctor -_id"); // Loại bỏ `_id` của `Schedule`

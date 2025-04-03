@@ -1,4 +1,5 @@
 const _repository = require("../repositories/sub.repository");
+const dayjs = require("dayjs");
 
 class UserService {
   async getAllByRole(role) {
@@ -22,6 +23,23 @@ class UserService {
   async delete(id) {
     await _repository.userRepository.delete(id);
     return "Đã xóa thành công";
+  }
+
+  async getDocTorsByDate(date) {
+    const parsedDate = dayjs(date);
+
+    const doctorsToGet = await _repository.userRepository.getDoctorsByDate(
+      parsedDate
+    );
+    if (doctorsToGet.length === 0)
+      throw Object.assign(
+        new Error(
+          "Không có bác sĩ nào làm việc vào thời điểm này. Vui lòng chọn ngày khác"
+        ),
+        { status: 404 }
+      );
+
+    return doctorsToGet;
   }
 }
 

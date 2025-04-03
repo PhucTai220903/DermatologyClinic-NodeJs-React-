@@ -7,7 +7,7 @@ exports.getAllByRole = async (req, res) => {
     const users = await _userService.getAllByRole(role);
     res.json(users);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(err.status).json({ message: err.message });
   }
 };
 
@@ -17,6 +17,16 @@ exports.getProfile = (req, res) => {
     user: req.user,
     token: req.cookies,
   });
+};
+
+exports.getDocstorByDate = async (req, res) => {
+  try {
+    const { date } = req.body;
+    const dateToCheckDoctors = await _userService.getDocTorsByDate(date);
+    res.status(200).json(dateToCheckDoctors);
+  } catch (error) {
+    res.status(error.status).json({ message: error.message });
+  }
 };
 
 // POST

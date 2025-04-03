@@ -1,6 +1,7 @@
 const { response } = require("express");
 const _appointmentService = require("../services/appointment.service");
 
+// GET
 exports.getAll = async (req, res) => {
   try {
     const appointments = await _appointmentService.getAll();
@@ -31,6 +32,7 @@ exports.getByStatus = async (req, res) => {
   }
 };
 
+// POST
 exports.addByCustomer = async (req, res) => {
   try {
     var currentUserId = req.user.id;
@@ -56,6 +58,7 @@ exports.addByPharmacist = async (req, res) => {
   }
 };
 
+// PUT
 exports.update = async (req, res) => {
   try {
     const updateAppointment = await _appointmentService.update(
@@ -69,6 +72,7 @@ exports.update = async (req, res) => {
   }
 };
 
+// DETELE
 exports.delete = async (req, res) => {
   try {
     const deletedAppointment = await _appointmentService.delete(req.params.id);

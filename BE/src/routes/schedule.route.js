@@ -5,11 +5,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 const userRole = require("../enums/userRole.enum");
 
 router.get("/getDoctorsByDate", scheduleController.getDoctorsByDate);
-router.get(
-  "/getByDoctorId/:id",
-  authMiddleware.verifyRoles([userRole.admin, userRole.DOCTOR]),
-  scheduleController.getByDoctorId
-);
+router.get("/getByDoctorId/:id", scheduleController.getByDoctorId);
 router.post(
   "/add",
   authMiddleware.verifyRoles(userRole.DOCTOR),

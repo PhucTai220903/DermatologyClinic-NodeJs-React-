@@ -80,20 +80,17 @@ class appointmentService {
     }
 
     // Kiểm tra lịch trùng
-    const existingAppointments =
-      await _repository.appointmentRepository.findByDoctorAndDate(
-        entity.doctor_id,
-        appointmentDate
-      );
-    if (existingAppointments.length > 0) {
+    const exsistingSchedule =
+      await _repository.scheduleRepository.getDoctorsByDate(appointmentDate);
+    if (exsistingSchedule.length === 0) {
       throw Object.assign(
-        new Error("Bác sĩ đã có lịch hẹn vào thời gian này"),
+        new Error("Bác sĩ không có lịch làm việc vào thời gian này"),
         { status: 400 }
       );
     }
 
     // Kiểm tra số lần đặt lịch của khách hàng trong ngày
-    const customerAppointments =
+    /*const customerAppointments =
       await _repository.appointmentRepository.findByCustomerAndDate(
         customer_id,
         appointmentDate
@@ -103,7 +100,7 @@ class appointmentService {
         new Error("Bạn đã đặt tối đa 2 lịch hẹn trong ngày này"),
         { status: 400 }
       );
-    }
+    }*/
 
     // Thêm thông tin khách hàng vào entity
     entity.customer_id = customer_id;

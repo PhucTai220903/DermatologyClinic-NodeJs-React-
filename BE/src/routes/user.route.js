@@ -12,6 +12,7 @@ router.get(
 );
 
 router.post("/getById", userController.getById);
+router.post("/getDoctorsByDate", userController.getDocstorByDate);
 router.put("/update/:id", userController.update);
 router.delete("/delete", userController.delete);
 
