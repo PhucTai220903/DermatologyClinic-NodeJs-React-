@@ -58,6 +58,12 @@ exports.register = async (newUserRequest) => {
   }
 
   // Validate gender
+  if (!newUserRequest.gender) {
+    throw Object.assign(new Error("Phải nhập đầy đủ"), {
+      status: 400,
+    });
+  }
+
   const validGenders = ["male", "female", "other"];
   if (!validGenders.includes(newUserRequest.gender)) {
     throw Object.assign(new Error("Giới tính không hợp lệ"), { status: 400 });

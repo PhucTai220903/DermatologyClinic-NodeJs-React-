@@ -16,13 +16,19 @@ class appointmentService {
 
   async add(customer_id, entity) {
     // Validate dữ liệu đầu vào
-    if (!entity || !customer_id || !entity.doctor_id) {
+    if (!entity || !customer_id) {
       throw Object.assign(new Error("Không được để trống"), { status: 400 });
+    } else if (!entity.doctor_id) {
+      throw Object.assign(new Error("Danh mục bác sĩ không được để trống"), {
+        status: 400,
+      });
     }
 
-    // Validate ngày hẹn
     if (!entity.date) {
-      throw Object.assign(new Error("Vui lòng chọn ngày hẹn"), { status: 400 });
+      // Validate ngày hẹn
+      throw Object.assign(new Error("Vui lòng chọn ngày hẹn"), {
+        status: 400,
+      });
     }
 
     // Kiểm tra ngày hẹn không được trong quá khứ

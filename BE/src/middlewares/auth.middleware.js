@@ -17,7 +17,9 @@ exports.currentUser = (req, res, next) => {
 
 exports.verifyRoles = (roles) => (req, res, next) => {
   try {
-    const token = req.cookies.jwt_token;
+    const token = req.cookies.token;
+    //      const token = req.cookies.jwt_token;
+
     if (!token) {
       return res
         .status(401)

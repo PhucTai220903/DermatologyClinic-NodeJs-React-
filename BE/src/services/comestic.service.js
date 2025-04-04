@@ -71,7 +71,14 @@ class ComesticService {
     }
 
     // Validate số lượng
-    if (!entity.quantity || entity.quantity < 0) {
+    if (!entity.quantity) {
+      throw Object.assign(
+        new Error("Số lượng sản phẩm không không được để trống"),
+        {
+          status: 400,
+        }
+      );
+    } else if (entity.quantity < 0) {
       throw Object.assign(new Error("Số lượng sản phẩm không hợp lệ"), {
         status: 400,
       });
@@ -147,7 +154,11 @@ class ComesticService {
     }
 
     // Validate danh mục nếu có thay đổi
-    if (entity.category && entity.category.trim().length < 2) {
+    if (!entity.category) {
+      throw Object.assign(new Error("Danh mục sản phẩm không được để trống"), {
+        status: 400,
+      });
+    } else if (entity.category.trim().length < 2) {
       throw Object.assign(new Error("Danh mục sản phẩm không hợp lệ"), {
         status: 400,
       });
