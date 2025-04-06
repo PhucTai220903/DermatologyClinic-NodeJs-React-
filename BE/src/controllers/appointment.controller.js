@@ -40,7 +40,7 @@ exports.addByCustomer = async (req, res) => {
       currentUserId,
       req.body
     );
-    res.status(200).json({ message: appointmentToAdd });
+    res.status(201).json({ message: appointmentToAdd });
   } catch (error) {
     res.status(error.status).json({ message: error.message });
   }
@@ -52,7 +52,7 @@ exports.addByPharmacist = async (req, res) => {
       req.body.customer_id,
       req.body
     );
-    res.status(200).json({ message: appointmentToAdd });
+    res.status(201).json({ message: appointmentToAdd });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

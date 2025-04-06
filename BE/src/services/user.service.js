@@ -10,21 +10,6 @@ class UserService {
     return await _repository.userRepository.getById(id);
   }
 
-  async add(entity) {
-    await _repository.userRepository.add(entity);
-    return "Thêm thành công";
-  }
-
-  async update(id, entity) {
-    await _repository.userRepository.update(id, entity);
-    return "Đã cập nhật thành công";
-  }
-
-  async delete(id) {
-    await _repository.userRepository.delete(id);
-    return "Đã xóa thành công";
-  }
-
   async getDocTorsByDate(date) {
     const parsedDate = dayjs(date);
 
@@ -40,6 +25,33 @@ class UserService {
       );
 
     return doctorsToGet;
+  }
+
+  async getCustomerByName(customerName) {
+    const customerToGet = await _repository.userRepository.getCustomerByName(
+      customerName
+    );
+    if (customerToGet.length === 0)
+      throw Object.assign(new Error("Không tìm thấy khách hàng này"), {
+        status: 404,
+      });
+
+    return customerToGet;
+  }
+
+  async add(entity) {
+    await _repository.userRepository.add(entity);
+    return "Thêm thành công";
+  }
+
+  async update(id, entity) {
+    await _repository.userRepository.update(id, entity);
+    return "Đã cập nhật thành công";
+  }
+
+  async delete(id) {
+    await _repository.userRepository.delete(id);
+    return "Đã xóa thành công";
   }
 }
 

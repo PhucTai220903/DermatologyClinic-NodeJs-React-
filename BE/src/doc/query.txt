@@ -84,4 +84,13 @@ someNumber > 0: b đứng trước a
 someNumber === 0: Giữ nguyên vị trí
 EX:  comesticToGet.reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
+4. User.find({}, { name: 1, email: 1 })
+=> Trả về chỉ name, email và _id
+
+User.find({}, { password: 0, age: 0 })
+=> Trả về tất cả các trường ngoại trừ password và age
+
+// ❌ Không hợp lệ:
+User.find({}, { name: 1, password: 0 }) Ko thể mĩ
+
 

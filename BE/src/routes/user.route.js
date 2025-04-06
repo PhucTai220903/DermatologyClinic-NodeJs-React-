@@ -13,6 +13,12 @@ router.get(
 
 router.post("/getById", userController.getById);
 router.post("/getDoctorsByDate", userController.getDocstorByDate);
+router.post(
+  "/getCustomerByName",
+  authMiddleware.verifyRoles(userRole.PHARMACIST),
+  userController.getCustomerByName
+);
+
 router.put("/update/:id", userController.update);
 router.delete("/delete", userController.delete);
 

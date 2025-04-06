@@ -44,6 +44,18 @@ exports.getById = async (req, res) => {
   }
 };
 
+exports.getCustomerByName = async (req, res) => {
+  try {
+    const customerToGet = await _userService.getCustomerByName(
+      req.body.customer_name
+    );
+    res.status(200).json(customerToGet);
+  } catch (error) {
+    res.status(error.status).json({ message: error.message });
+  }
+};
+
+// PUT
 exports.update = async (req, res) => {
   try {
     const updatedUser = await _userService.update(req.params.id, req.body);
@@ -55,6 +67,7 @@ exports.update = async (req, res) => {
   }
 };
 
+// DELETE
 exports.delete = async (req, res) => {
   try {
     const deletedUser = await userService.delete(req.params.id);

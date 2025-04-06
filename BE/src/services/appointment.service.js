@@ -40,6 +40,17 @@ class appointmentService {
       });
     }
 
+    // Kiểm tra appointment đã được hẹn trước đó chưa
+    const existingAppoiment =
+      await _repository.appointmentRepository.getByCustomerIdAndDate(
+        entity.customer_id,
+        entity.date
+      );
+    if (existingAppoiment)
+      throw Object.assign(new Error("Lịch hẹn này đã được hẹn trước đó"), {
+        status: 400,
+      });
+
     // Kiểm tra ngày hẹn không được quá xa trong tương lai (ví dụ: 3 tháng)
     const maxFutureDate = new Date();
     maxFutureDate.setMonth(maxFutureDate.getMonth() + 3);

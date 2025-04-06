@@ -12,7 +12,11 @@ router.post(
   authMiddleware.verifyRoles(userRole.CUSTOMER),
   appointmentController.addByCustomer
 );
-router.post("/addByPharmacist", appointmentController.addByPharmacist);
+router.post(
+  "/addByPharmacist",
+  authMiddleware.verifyRoles(userRole.PHARMACIST),
+  appointmentController.addByPharmacist
+);
 router.put("/update/:id", appointmentController.update);
 router.delete("/delete", appointmentController.delete);
 

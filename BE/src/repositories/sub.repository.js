@@ -26,6 +26,16 @@ class UserRepository extends BaseRepository {
   async getAllByRole(role) {
     return await this.model.find({ role: role });
   }
+
+  async getCustomerByName(customerName) {
+    return await this.model.find(
+      {
+        name: { $regex: customerName, $options: "i" }, // tìm không phân biệt hoa thường
+        role: "customer",
+      },
+      { email: 1, name: 1 } // Explain in doc file
+    );
+  }
 }
 
 class AppointmentRepository extends BaseRepository {
@@ -43,6 +53,16 @@ class AppointmentRepository extends BaseRepository {
       { medical_record_id },
       { new: true }
     );
+  }
+
+  async getByCustomerIdAndDate(customer_id, date) {
+    const startOfDay = dayjs(date).startOf("day").toDate();
+    const endOfDay = dayjs(date).endOf("day").toDate();
+
+    return await this.model.find({
+      date: { $gte: startOfDay, $lt: endOfDay },
+      customer_id,
+    });
   }
 }
 
