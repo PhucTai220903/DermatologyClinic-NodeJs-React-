@@ -24,6 +24,8 @@ class appointmentService {
       });
     }
 
+    const customer_idToBeSet = customer_id ? customer_id : entity.customer_id;
+
     if (!entity.date) {
       // Validate ngày hẹn
       throw Object.assign(new Error("Vui lòng chọn ngày hẹn"), {
@@ -43,10 +45,10 @@ class appointmentService {
     // Kiểm tra appointment đã được hẹn trước đó chưa
     const existingAppoiment =
       await _repository.appointmentRepository.getByCustomerIdAndDate(
-        entity.customer_id,
+        customer_idToBeSet,
         entity.date
       );
-    if (existingAppoiment)
+    if (existingAppoiment.length !== 0)
       throw Object.assign(new Error("Lịch hẹn này đã được hẹn trước đó"), {
         status: 400,
       });
@@ -63,7 +65,7 @@ class appointmentService {
 
     // Tìm cả khách hàng và bác sĩ cùng lúc để tối ưu tốc độ
     const [existingCustomer, existingDoctor] = await Promise.all([
-      User.findById(customer_id),
+      User.findById(customer_idToBeSet),
       User.findById(entity.doctor_id),
     ]);
 
@@ -120,7 +122,7 @@ class appointmentService {
     }*/
 
     // Thêm thông tin khách hàng vào entity
-    entity.customer_id = customer_id;
+    entity.customer_id = customer_idToBeSet;
     entity.status = "confirmed"; // Trạng thái mặc định khi đặt lịch
 
     // Thêm lịch hẹn mới

@@ -20,6 +20,6 @@ router.post(
 );
 
 router.put("/update/:id", userController.update);
-router.delete("/delete", userController.delete);
+router.delete("/delete/:id", userController.delete);
 
 module.exports = router;

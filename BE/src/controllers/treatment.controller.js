@@ -64,7 +64,7 @@ exports.update = async (req, res) => {
 // DELETE
 exports.delete = async (req, res) => {
   try {
-    const treatmentToDelete = await _treatmentService.delete(req.body.id);
+    const treatmentToDelete = await _treatmentService.delete(req.params.id);
     res.status(200).json({ message: treatmentToDelete });
   } catch (err) {
     res.status(err.status).json({ message: err.message });

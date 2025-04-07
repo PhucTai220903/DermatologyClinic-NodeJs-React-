@@ -15,7 +15,7 @@ router.put(
   medicineController.update
 );
 router.delete(
-  "/delete",
+  "/delete/:id",
   authMiddleware.verifyRoles(userRole.ADMIN),
   medicineController.delete
 );

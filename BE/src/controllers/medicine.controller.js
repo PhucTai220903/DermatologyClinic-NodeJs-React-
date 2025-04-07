@@ -60,7 +60,7 @@ exports.update = async (req, res) => {
 // DELETE
 exports.delete = async (req, res) => {
   try {
-    const medicineToDelete = await _medicineService.delete(req.body.id);
+    const medicineToDelete = await _medicineService.delete(req.params.id);
     res.status(200).json({ message: medicineToDelete });
   } catch (err) {
     res.status(err.status).json({ message: err.message });

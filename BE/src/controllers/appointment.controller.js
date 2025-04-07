@@ -78,7 +78,7 @@ exports.delete = async (req, res) => {
     const deletedAppointment = await _appointmentService.delete(req.params.id);
     if (!deletedAppointment)
       return res.status(404).json({ messgae: "Không tồn tại mỹ phẩm này" });
-    res.json(deletedAppointment);
+    res.status(200).json(deletedAppointment);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

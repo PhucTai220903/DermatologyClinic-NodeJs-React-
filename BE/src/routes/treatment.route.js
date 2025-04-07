@@ -19,7 +19,7 @@ router.put(
   treatmentController.update
 );
 router.delete(
-  "/delete",
+  "/delete/:id",
   authMiddleware.verifyRoles(userRole.ADMIN),
   treatmentController.delete
 );
