@@ -1,0 +1,9 @@
+8611 - Đỗ Đăng Nhật Tân
+- Code chức năng: Quản lý bác sĩ, chuyên khoa và lịch hẹn
+- Task: 
+	+ Hiển thị danh sách lịch hẹn theo ngày/tuần
+	+ Duyệt/huỷ lịch hẹn
+	+ Tạo/sửa/xoá thông tin bác sĩ
+	+ Phân loại chuyên môn (mụn, nám, da liễu tổng quát,…)
+- Quá trình: In progress
+- Mức độ hoàn thành: 80%
