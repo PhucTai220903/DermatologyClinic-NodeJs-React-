@@ -10,4 +10,4 @@ Thiết kế giao diện người dùng:
 	+ Chi tiết từng lần khám
 - Quản lý mỹ phẩm:
 	+ Thêm mỹ phẩm vào giỏ
-	+ Thêm sản phẩm vào giỏ hàng
+	+ Thêm sản phẩm vào giỏ hàng.
