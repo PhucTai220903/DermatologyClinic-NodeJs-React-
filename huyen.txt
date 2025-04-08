@@ -1,0 +1,13 @@
+Thiết kế giao diện người dùng:
+-Có một trang chủ thân thiện, dễ sử dụng:
+	+ Thiết kế layout trang chủ
+	+ Thiết kế responsive cho web
+- Trang đặt lịch khám
+	+ Tạo form đặt lịch
+	+ Tích hợp bài viết/blog về các dịch vụ khám
+- Quản lý lịch sử khám:
+	+ Hiển thị danh sách lịch sử khám
+	+ Chi tiết từng lần khám
+- Quản lý mỹ phẩm:
+	+ Thêm mỹ phẩm vào giỏ
+	+ Thêm sản phẩm vào giỏ hàng
