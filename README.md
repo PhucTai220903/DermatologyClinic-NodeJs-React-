@@ -26,7 +26,7 @@ Hệ thống quản lý phòng khám da liễu là một ứng dụng web toàn 
 - **Axios**: Xử lý HTTP requests
 - **Material-UI/Bootstrap 5**: Styling và UI components
 
-## Chức Năng Chính
+## Chức Năng Chính.
 
 ### Quản Lý Người Dùng
 
