@@ -1,0 +1,9 @@
+Chức năng người dùng:
+    - Tạo đăng ký(xác thực email), đăng nhập.
+    - Chức năng ghi nhớ và quên mật khẩu
+    - Quản lý lịch sử khám bệnh
+    - Hiển thị danh sách lịch sử khám
+    - Hiển thị chi tiết từng lần khám
+    - Quản lý mỹ phẩm
+    - Thêm mỹ phẩm vào giỏ hàng
+    
